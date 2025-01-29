@@ -1,0 +1,27 @@
+{{block "todos" .}}
+    {{if .Todos}}
+        <form method="POST" action="/todo/update">
+            <ul>
+            {{range $i, $e := .Todos}}
+                <li>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="todo-{{$i}}"
+                            {{if .Done}}checked="checked"{{end}}
+                        /> {{.Title}}
+                    </label>
+                </li>
+            {{end}}
+            </ul>
+            <button type="submit">Update</button>
+        </form>
+    {{else}}
+        <p>No todos in the list.</p>
+    {{end}}
+
+    <form method="POST" action="/todo/add">
+        <input type="text" name="name" placeholder="Enter new todo" />
+        <button type="submit">Add</button>
+    </form>
+{{end}}
