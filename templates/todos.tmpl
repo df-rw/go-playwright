@@ -1,7 +1,7 @@
 {{block "todos" .}}
     {{if .Todos}}
         <form method="POST" action="/todo/update">
-            <ul>
+            <ul id="todo-list">
             {{range $i, $e := .Todos}}
                 <li>
                     <label>
@@ -21,7 +21,7 @@
     {{end}}
 
     <form method="POST" action="/todo/add">
-        <input type="text" name="name" placeholder="Enter new todo" />
-        <button type="submit">Add</button>
+        <input type="text" name="new-todo" placeholder="Enter new todo" />
+        <button type="submit" name="add-new-todo">Add</button>
     </form>
 {{end}}

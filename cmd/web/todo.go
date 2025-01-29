@@ -23,7 +23,7 @@ func (app *Application) todoHome(w http.ResponseWriter, r *http.Request) {
 
 func (app *Application) todoAdd(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	name := r.FormValue("name")
+	name := r.FormValue("new-todo")
 
 	if name != "" {
 		newTodo := Todo{
