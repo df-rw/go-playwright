@@ -6,3 +6,6 @@ dev: # Run development server.
 
 test: # Run playwright tests
 	go run ./cmd/playwright/do-tests.go
+
+lint: # Run the linter.
+	golangci-lint run ./...

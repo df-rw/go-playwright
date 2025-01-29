@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"go-playwright-test/internal/todos"
 	"log"
 	"net/http"
 	"text/template"
@@ -12,14 +13,17 @@ import (
 )
 
 type Application struct {
-	tpl *template.Template
+	tpl   *template.Template
+	todos *todos.Todos
 }
 
 func New() *Application {
 	tpl := template.Must(template.ParseGlob("templates/*.tmpl"))
+	todos := todos.New()
 
 	return &Application{
 		tpl,
+		todos,
 	}
 }
 
