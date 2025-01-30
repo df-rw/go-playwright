@@ -1,39 +1,17 @@
-package main
+package tests
 
 import (
 	"fmt"
 	"log"
-
-	"github.com/playwright-community/playwright-go"
+	"testing"
 )
 
-func main() {
-	// Browser install.
-	err := playwright.Install()
-	if err != nil {
-		log.Fatalf("playwright.Install() failed: %v", err)
-	}
+func TestOne(t *testing.T) {
+	BeforeEach(t)
 
-	// Startup playwright.
-	pw, err := playwright.Run()
-	if err != nil {
-		log.Fatalf("playwright.Run() failed: %v", err)
-	}
+	var err error
 
-	// Launch browser.
-	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-		Headless: true,
-	})
-	if err != nil {
-		log.Fatalf("pw.Chromium.Launch() failed: %v", err)
-	}
-
-	// run tests
-	page, err := browser.NewPage()
-	if err != nil {
-		log.Fatalf("browser.NewPage() failed: %v", err)
-	}
-
+	// Taken from /cmd/playwright/do-tests.go
 	if _, err = page.Goto("http://localhost:4321"); err != nil {
 		log.Fatalf("page.Goto() failed: %v", err)
 	}
@@ -63,13 +41,4 @@ func main() {
 		log.Fatalf("todos.Count() failed: %v", err)
 	}
 	fmt.Println(count, "elements in the list")
-
-	// Cleanup.
-	// TODO defer these
-	if err = browser.Close(); err != nil {
-		log.Fatalf("browser.Close() failed: %v", err)
-	}
-	if err = pw.Stop(); err != nil {
-		log.Fatalf("pw.Stop() failed: %v", err)
-	}
 }

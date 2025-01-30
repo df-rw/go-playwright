@@ -5,8 +5,12 @@ Go web application and playwright
 ## Demo application
 
 * Simple todo application here. Nothing special.
-* `make dev` to make it go (requires https://github.com/air-verse/air for live reloading).
-* `make test` to run Playwright.
+* `make dev` to make it go (requires https://github.com/air-verse/air for live
+  reloading). Click click click.
+* `make test-unit` to run unit tests using the go [testing
+  library](https://pkg.go.dev/testing).
+* `make test-browser` to run the stand-alone playwright test app.
+* `make test-browser-with-testing` to run playwright from the go testing library.
 
 ## Install playwright
 
@@ -51,3 +55,24 @@ Downloading FFMPEG playwright build v1010 from https://playwright.azureedge.net/
 FFMPEG playwright build v1010 downloaded to /Users/dfogarty/Library/Caches/ms-playwright/ffmpeg-1010
 2025/01/29 13:32:15 INFO Downloaded browsers successfully
 ```
+
+## Running tests
+
+Browser tests run by playwright can exist as stand-alone executables, or be
+wrapped with the Go [testing library](https://pkg.go.dev/testing).
+
+### Stand-alone
+
+* Make a new package under `/cmd`.
+* Create a `main.go` file that calls the [Playwright
+  API](https://playwright.dev/docs/api/class-playwright).
+
+An example stand-alone test is in `cmd/playwright/do-tests.go`.
+
+### Wrapped in testing
+
+TODO
+
+## References
+
+* https://playwright-community.github.io/playwright-go/
