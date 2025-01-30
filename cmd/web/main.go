@@ -10,6 +10,7 @@ import (
 	"text/template"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 type Application struct {
@@ -52,6 +53,7 @@ func main() {
 
 	app := New()
 	r := chi.NewRouter()
+	r.Use(middleware.Logger)
 
 	r.Get("/", app.todoHome)               // show all todos
 	r.Post("/todo/add", app.todoAdd)       // add a new todo
