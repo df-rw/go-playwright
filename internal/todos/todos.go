@@ -28,7 +28,7 @@ func (t *Todos) Add(title string, done bool) (int, error) {
 		Title: title,
 		Done:  done,
 	})
-	return len(t.todos), nil
+	return len(t.todos) - 1, nil // zero-offset
 }
 
 func (t *Todos) ToggleDone(id int) error {
@@ -49,6 +49,13 @@ func (t *Todos) SetDone(id int, done bool) error {
 	t.todos[id].Done = done
 
 	return nil
+}
+
+func (t *Todos) IsDone(id int) (bool, error) {
+	if id >= len(t.todos) {
+		return false, ErrInvalidID
+	}
+	return t.todos[id].Done, nil
 }
 
 func (t *Todos) SetAllDone(done bool) error {
