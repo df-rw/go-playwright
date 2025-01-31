@@ -24,6 +24,7 @@ var (
 	isWebKit    bool
 	browserName = getBrowserName()
 	browserType playwright.BrowserType
+	testURL     = os.Getenv("TESTHOST") == ""
 )
 
 // default context options for most tests

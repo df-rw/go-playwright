@@ -20,12 +20,10 @@ func MustGetenv(t *testing.T, name string) string {
 func TestOne(t *testing.T) {
 	BeforeEach(t)
 
-	host := MustGetenv(t, "TESTHOST")
-
 	var err error
 
 	// Taken from /cmd/playwright/do-tests.go
-	if _, err = page.Goto(host); err != nil {
+	if _, err = page.Goto(testURL); err != nil {
 		t.Fatalf("page.Goto() failed: %v", err)
 	}
 

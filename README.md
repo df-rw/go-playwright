@@ -7,10 +7,11 @@ Go web application and playwright
 * Simple todo application here. Nothing special.
 * `make dev` to make it go (requires https://github.com/air-verse/air for live
   reloading). Click click click.
-* `make test-unit` to run unit tests using the go [testing
-  library](https://pkg.go.dev/testing).
-* `make test-browser` to run the stand-alone playwright test app.
-* `make test-browser-with-testing` to run playwright from the go testing library.
+* `make test` to run the tests - unit and e2e.
+
+The application looks for TESTHOST that does a few things, but you can stub out
+that stuff and make it do what you like. The fails show it's working, I guess
+:shrug:
 
 ## Install playwright
 
