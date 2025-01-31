@@ -1,5 +1,8 @@
 package tests
 
+// With some adjustments; sourced from
+// - https://github.com/playwright-community/playwright-go/blob/main/tests/helper_test.go
+
 import (
 	"log"
 	"os"
