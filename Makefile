@@ -1,10 +1,10 @@
 help: # me
-	@grep '^[a-z.]*:' Makefile | sed -e 's/^\(.*\): .*# \(.*\)/\1 - \2/'
+	@grep '^[-a-z.]*:' Makefile | sed -e 's/^\(.*\): .*# \(.*\)/\1 - \2/'
 
 dev: # Run development server.
 	air
 
-test: test-unit test-browser # Run tests.
+test: test-unit test-browser-standalone test-browser-with-testing # Run tests.
 
 test-unit: # Run unit tests.
 	go test -v ./internal/...

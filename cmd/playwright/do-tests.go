@@ -22,7 +22,7 @@ func main() {
 
 	// Launch browser.
 	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-		Headless: true,
+		Headless: playwright.Bool(true),
 	})
 	if err != nil {
 		log.Fatalf("pw.Chromium.Launch() failed: %v", err)
